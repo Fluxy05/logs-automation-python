@@ -35,6 +35,8 @@ for line in fichier_log :
         site.append(split[10])
     useragent.append(f"{split[11]}{split[12]}")
 
+fichier_log.close
+
 def filtre_site(site_input):
     temp = []
     filt = []
@@ -69,7 +71,7 @@ sitefiltré = filtre_site(site)
 
 liste_site_visiter = site_visiter(sitefiltré)
 
-fichier_log.close
+
 
 def comptage_user_agent(useragent_input):
     result = []
@@ -136,7 +138,7 @@ html_contenu = f"""
     <link rel="stylesheet" href="main.css">
 </head>
 <body>
-
+    <div class="dashboard-container">
     <div style="width: 600px;">
         <canvas id="Graphique_requetes_user"></canvas>
     </div>
@@ -148,7 +150,7 @@ html_contenu = f"""
         <p>sites les plus visités</p>
         <canvas id="Graphique_site"></canvas>
     </div>
-
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <script>
             new Chart(document.getElementById("Graphique_requetes_user"), {{
@@ -166,7 +168,8 @@ html_contenu = f"""
                     position: 'top',
                     title: {{
                         display: true,
-                        text: "Graphique du nombre de requetes par cette utilisateur"
+                        text: "Graphique du nombre de requetes par cette utilisateur",
+                        color: 'white'
                     }}
                 }}
             }});
